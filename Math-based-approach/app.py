@@ -13,7 +13,7 @@ tracker = CentroidTracker(max_disappeared=15)
 # history=500 frames to learn the background, varThreshold=16 for motion sensitivity
 # Increase varThreshold to ignore minor pixel variations (default is 16)
 # Setting it higher makes it less sensitive to micro-movements, but keeps fast-moving cars
-object_detector = cv2.createBackgroundSubtractorMOG2(history=500, varThreshold=75, detectShadows=False)
+object_detector = cv2.createBackgroundSubtractorMOG2(history=500, varThreshold=50, detectShadows=False)
 
 # Create named windows first
 cv2.namedWindow("What the Tracker Sees (Mask)", cv2.WINDOW_NORMAL)
@@ -51,7 +51,7 @@ while cap.isOpened():
     rects = []
     for cnt in contours:
         area = cv2.contourArea(cnt)
-        if area > 200:
+        if area > 400:
             x, y, w, h = cv2.boundingRect(cnt)
             # 1. Filter out long, thin structural lines (like lanes or margins)
             aspect_ratio = float(w) / h
