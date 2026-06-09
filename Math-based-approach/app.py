@@ -12,6 +12,14 @@ tracker = CentroidTracker(max_disappeared=15)
 # history=500 frames to learn the background, varThreshold=16 for motion sensitivity
 object_detector = cv2.createBackgroundSubtractorMOG2(history=500, varThreshold=40, detectShadows=True)
 
+# Create named windows first
+cv2.namedWindow("What the Tracker Sees (Mask)", cv2.WINDOW_NORMAL)
+cv2.namedWindow("Final Math Tracking Output", cv2.WINDOW_NORMAL)
+
+# Force them to a reasonable preview size (e.g., 640x480 or 800x600)
+cv2.resizeWindow("What the Tracker Sees (Mask)", 640, 480)
+cv2.resizeWindow("Final Math Tracking Output", 640, 480)
+
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
