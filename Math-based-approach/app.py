@@ -5,7 +5,7 @@ from tracker import CentroidTracker
 # --- Main Pipeline Execution ---
 
 # 1. Initialize Video Capture and Tracker
-video_source = "Testing\people_walking.mp4"  # Replace with 0 for webcam or your video path
+video_source = "Testing\highway.mp4"  # Replace with 0 for webcam or your video path
 cap = cv2.VideoCapture(video_source)
 tracker = CentroidTracker(max_disappeared=15)
 
